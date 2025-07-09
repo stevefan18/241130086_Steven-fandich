@@ -1,5 +1,5 @@
 const divInfo = document.querySelector('.info');
-document.querySelectorAll('.barang').forEach(function (barang) {
+document.querySelectorAll('.produk').forEach(function (barang) {
     barang.querySelector('.tambah').addEventListener('click', function () {
         const jumlahItem = barang.querySelector(".tombol input")
         jumlahItem.value = parseInt(jumlahItem.value) + 1
@@ -53,3 +53,16 @@ document.querySelector('.apply').addEventListener('click', function (e) {
         subTotal += parseInt(jumalahBarang * hargaBarang)
     });
 
+    if (inputKode.value === 'DISKON50') {
+        subTotal = subTotal - (subTotal * 50 / 100)
+
+    }
+    info.innerHTML += `<p>subtotal : $${subTotal}</p>`
+});
+
+
+$('.reset').click(function () {
+    $('.total').val('0');
+    $('form input').val('');
+    $('.info').html('');
+});
